@@ -1,31 +1,34 @@
-class MyStack:
+class MyQueue:
 
     def __init__(self):
-        self.queue = collections.deque()
+        self.s1, self.s2 = [], []
         
 
     def push(self, x: int) -> None:
-        self.queue.append(x)
-        for _ in range(len(self.queue)-1):
-            self.queue.append(self.queue.popleft())
+        self.s1.append(x)
         
 
     def pop(self) -> int:
-        return self.queue.popleft()
+        while self.s1:
+            self.s2.append(self.s1.pop())
+        pop = self.s2.pop()
+        while self.s2:
+            self.s1.append(self.s2.pop())
+        return pop
         
 
-    def top(self) -> int:
-        return self.queue[0]
+    def peek(self) -> int:
+        return self.s1[0]
         
 
     def empty(self) -> bool:
-        return len(self.queue) == 0
+        return len(self.s1) == 0
         
 
 
-# Your MyStack object will be instantiated and called as such:
-# obj = MyStack()
+# Your MyQueue object will be instantiated and called as such:
+# obj = MyQueue()
 # obj.push(x)
 # param_2 = obj.pop()
-# param_3 = obj.top()
+# param_3 = obj.peek()
 # param_4 = obj.empty()
