@@ -3,8 +3,6 @@ class Solution:
         answer = []
         def dfs(index: int, discovered: List[int]):
             answer.append(discovered[:])
-            if len(discovered) == len(nums):
-                return
             for i in range(index,len(nums)):
                 discovered.append(nums[i])
                 dfs(i+1,discovered)
