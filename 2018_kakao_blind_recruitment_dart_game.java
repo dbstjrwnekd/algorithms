@@ -1,5 +1,4 @@
 import java.util.HashMap;
-import java.util.ArrayList;
 
 class Solution {
     public int solution(String dartResult) {
